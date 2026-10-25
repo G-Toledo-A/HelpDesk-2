@@ -1,3 +1,6 @@
+//importa a lista de chamados
+import { chamados } from "./chamados.js";
+
 // Procura o elemento <div id="app">.
 // Função que desenha o Dashboard.
 export function mostrarDashboard() {

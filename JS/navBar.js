@@ -1,4 +1,7 @@
-import { mostrarDashboard } from "./dashboard";
+// importa as 3 funções para trocar de tela
+import { mostrarDashboard } from "./dashboard.js";
+import { mostrarChamados } from "./chamados.js";
+import { mostrarNovoChamado } from "./novoChamado.js";
 
 // Guardaremos a referência para alterar a tela.
 const app = document.getElementById("app");

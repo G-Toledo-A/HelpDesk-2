@@ -1,6 +1,8 @@
 // Array com dados temporários.
 // Eles existem apenas enquanto a página está aberta.
-const chamados = [
+
+// exporta a lista para outros arquivos
+export const chamados = [
     {
         // Identificador único deste exemplo.
         id: 1,
@@ -44,13 +46,38 @@ const chamados = [
 
 
 // Função que desenha a listagem.
-function mostrarChamados() {
+export function mostrarChamados() {
+
+    //objeto de classes criado para carregar a comparação
+    const nivelDchamada = {
+        "Alta": "alert table-danger",
+        "Média": "alert table-warning",
+        "Baixa": "alert table-success"
+    };
+
+    // map transforma cada objeto em uma linha HTML.
+    const listaChamados = chamados.map(chamado => {
+        //compara a prioridade com o objeto e determina a classe de acordo
+        const nivel = nivelDchamada[chamado.prioridade] || "";
+
+        return `
+            <!-- determina a classe do chamado de acordo com a prioridade -->
+            <tr class="${nivel}">
+                <td>${chamado.id}</td>
+                <td>${chamado.titulo}</td>
+                <td>${chamado.prioridade}</td>
+                <td>${chamado.status}</td>
+            </tr>
+        
+        <!-- join une todas as linhas sem vírgula. -->
+        `;
+    }).join("");
 
     app.innerHTML = `
         <h1 class="mb-4">Chamados</h1>
 
         <div class="table-responsive">
-            <table class="table table-striped align-middle">
+            <table class="table table-striped align-middle table-hover">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -61,19 +88,7 @@ function mostrarChamados() {
                 </thead>
 
                 <tbody>
-                    ${
-                        // map transforma cada objeto em uma linha HTML.
-                        chamados.map(chamado => `
-                            <tr>
-                                <td>${chamado.id}</td>
-                                <td>${chamado.titulo}</td>
-                                <td>${chamado.prioridade}</td>
-                                <td>${chamado.status}</td>
-                            </tr>
-                        `)
-                        // join une todas as linhas sem vírgula.
-                        .join("")
-                    }
+                    ${listaChamados}
                 </tbody>
             </table>
         </div>

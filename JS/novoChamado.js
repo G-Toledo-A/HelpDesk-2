@@ -1,5 +1,9 @@
+// importa a lista de chamados e função para trocar de tela
+import { chamados } from "./chamados.js";
+import { mostrarChamados } from "./chamados.js";
+
 // Função que desenha o formulário.
-function mostrarNovoChamado() {
+export function mostrarNovoChamado() {
 
     app.innerHTML = `
         <h1 class="mb-4">Novo chamado</h1>
