@@ -1,0 +1,37 @@
+:root {
+    --corPadraoTexto: #d6d6d6;
+    --corSecundariaTexto: #070707;
+    --alerta: #b41313;
+    --medio: #f0cd30;
+    --baixa: #5eeb42;
+}
+
+@keyframes piscaAlerta {
+    0% {
+        background-color: whitesmoke;
+        color: black;
+    }
+
+    70% {
+        color: black;
+    }
+
+    100% {
+        background-color: var(--alerta);
+        color: var(--corPadraoTexto);
+    }
+}
+
+.table tbody{
+    tr.alta > *  {
+        animation: piscaAlerta 1s ease-in-out infinite alternate;
+    }
+    tr.media > * {
+        color: var(--corSecundariaTexto);
+        background-color: var(--medio);
+    }
+    tr.baixa > * {
+        color: var(--corSecundariaTexto);
+        background-color: var(--baixa);
+    }
+}

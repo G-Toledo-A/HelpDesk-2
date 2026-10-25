@@ -50,9 +50,9 @@ export function mostrarChamados() {
 
     //objeto de classes criado para carregar a comparação
     const nivelDchamada = {
-        "Alta": "alert table-danger",
-        "Média": "alert table-warning",
-        "Baixa": "alert table-success"
+        "Alta": "alta",
+        "Média": "media",
+        "Baixa": "baixa"
     };
 
     // map transforma cada objeto em uma linha HTML.
