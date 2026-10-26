@@ -12,7 +12,7 @@
         color: black;
     }
 
-    70% {
+    65% {
         color: black;
     }
 
@@ -24,7 +24,7 @@
 
 .table tbody{
     tr.alta > *  {
-        animation: piscaAlerta 1s ease-in-out infinite alternate;
+        animation: piscaAlerta 1.5s ease-in-out infinite alternate;
     }
     tr.media > * {
         color: var(--corSecundariaTexto);

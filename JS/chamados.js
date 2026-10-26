@@ -31,6 +31,22 @@ export const chamados = [
         id: 3,
 
         // Título curto.
+        titulo: "teste",
+
+        // Descrição detalhada.
+        descricao: "item da lista criado para testar filtragem",
+
+        // Prioridade do atendimento.
+        prioridade: "Baixa",
+
+        // Situação atual.
+        status: "Aberto"
+    },
+    {
+        // Identificador único deste exemplo.
+        id: 3,
+
+        // Título curto.
         titulo: "notebook não liga",
 
         // Descrição detalhada.
@@ -44,12 +60,30 @@ export const chamados = [
     }
 ];
 
+function organizarLista(lista) {
+
+    //objeto criado para determinação de valor de posição em lista
+    const nivelDprioridade = {
+        "Alta": 1,
+        "Média": 2,
+        "Baixa": 3
+    };
+
+    //compara os itens da lista de acordo com o valor do objeto criado 
+    lista.sort((a, b) => 
+        nivelDprioridade[a.prioridade] - nivelDprioridade[b.prioridade]);
+
+    return lista;
+}
 
 // Função que desenha a listagem.
 export function mostrarChamados() {
 
+    //organiza a lista de chamados no inicio do chamado da função exportada
+    organizarLista(chamados);
+
     //objeto de classes criado para carregar a comparação
-    const nivelDchamada = {
+    const nivelDprioridade = {
         "Alta": "alta",
         "Média": "media",
         "Baixa": "baixa"
@@ -58,7 +92,7 @@ export function mostrarChamados() {
     // map transforma cada objeto em uma linha HTML.
     const listaChamados = chamados.map(chamado => {
         //compara a prioridade com o objeto e determina a classe de acordo
-        const nivel = nivelDchamada[chamado.prioridade] || "";
+        const nivel = nivelDprioridade[chamado.prioridade] || "";
 
         return `
             <!-- determina a classe do chamado de acordo com a prioridade -->
