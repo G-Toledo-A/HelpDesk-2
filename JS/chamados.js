@@ -1,3 +1,5 @@
+import { ouveTabela } from "./alterarStatus.js";
+
 // Array com dados temporários.
 // Eles existem apenas enquanto a página está aberta.
 
@@ -44,7 +46,7 @@ export const chamados = [
     },
     {
         // Identificador único deste exemplo.
-        id: 3,
+        id: 4,
 
         // Título curto.
         titulo: "notebook não liga",
@@ -89,10 +91,25 @@ export function mostrarChamados() {
         "Baixa": "baixa"
     };
 
+    //objeto de classes para realizar ações de chamados
+    const estado = {
+        "Aberto":        (id) => 
+            `<button type="button" class="btn btn-primary" id="btnAtender" data-id="${id}">Atender</button>`,
+        "Em atendimento":(id) =>  
+            `<button type="button" class="btn btn-primary" id="btnEncerrar" data-id="${id}">Encerrar</button>`,
+        "Encerrado":     (id) =>
+            `<button type="button" class="btn btn-secondary" data-id="${id}" disabled>Terminado</button>`
+    };
+
     // map transforma cada objeto em uma linha HTML.
     const listaChamados = chamados.map(chamado => {
         //compara a prioridade com o objeto e determina a classe de acordo
         const nivel = nivelDprioridade[chamado.prioridade] || "";
+        //chama o botão dependendo do status.
+        const estadoDstatus = estado[chamado.status] ? estado[chamado.status](chamado.id) : "";
+       /*
+        const estadoDstatus = estado[chamado.status] || "";
+        */
 
         return `
             <!-- determina a classe do chamado de acordo com a prioridade -->
@@ -101,6 +118,7 @@ export function mostrarChamados() {
                 <td>${chamado.titulo}</td>
                 <td>${chamado.prioridade}</td>
                 <td>${chamado.status}</td>
+                <td>${estadoDstatus}</td>
             </tr>
         
         <!-- join une todas as linhas sem vírgula. -->
@@ -118,13 +136,16 @@ export function mostrarChamados() {
                         <th>Título</th>
                         <th>Prioridade</th>
                         <th>Status</th>
+                        <th>Ações</th>
                     </tr>
                 </thead>
 
-                <tbody>
+                <tbody id="corpoTabela">
                     ${listaChamados}
                 </tbody>
             </table>
         </div>
     `;
+
+    ouveTabela(app);
 }
