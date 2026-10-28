@@ -52,8 +52,7 @@ export function ouveTabela(item){
 
         //botão de visualização
         if(botao.id === "btnVisu"){
-            console.log(botao.id);
-            console.log(botao.dataset.id);
+            //leva a tela de visu dos dados do chamado
             mostraDadosChamado(botao.dataset.id);
         }
     })

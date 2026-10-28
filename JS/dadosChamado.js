@@ -3,6 +3,7 @@ import { equivale } from "./alterarStatus.js";
 export function mostraDadosChamado(id){
     const chamado = equivale(id);
 
+    //se não tiver solução
     if(!chamado.solucao){
 
     app.innerHTML = `
@@ -39,6 +40,7 @@ export function mostraDadosChamado(id){
         </form>
     `;
     }
+    //se tiver solução
     else{
         app.innerHTML = `
             <h1 class="mb-4">Justifique o fechamento</h1>

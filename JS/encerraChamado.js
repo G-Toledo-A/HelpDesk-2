@@ -63,11 +63,18 @@ export function clamaJustificativa(idChamado){
         //determina o formulario
         const formulario = document.getElementById("formFechamento");
 
+        const solucao = document.getElementById("justificativa");
+
         //pega justificativa
         formulario.addEventListener("submit", (event) => {
             event.preventDefault();
 
-            adicionaJustificativa(chamado.id);
+            if(solucao.value.trim() === ''){
+                alert("Adicione a solução de como o chamado foi resolvido ou por que está sendo fechado.");
+                return
+            } else {   
+                adicionaJustificativa(chamado.id);
+            }
         });
     }
 }

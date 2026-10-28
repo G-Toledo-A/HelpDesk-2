@@ -91,7 +91,7 @@ export function mostrarChamados() {
     };
 
     //objeto de classes para realizar ações de chamados
-    const estado = {
+    const btnEstado = {
         "Aberto":        (id) => 
             `<button type="button" class="btn btn-primary" id="btnAtender" data-id="${id}">Atender</button>`,
         "Em atendimento":(id) =>  
@@ -100,15 +100,20 @@ export function mostrarChamados() {
             `<button type="button" class="btn btn-secondary" data-id="${id}" disabled>Terminado</button>`
     };
 
+    const badgeEstado = {
+        "Aberto": "badge tem-q-fazer",
+        "Em atendimento": "badge a-ser-feito",
+        "Encerrado": "badge feito"
+    }
+
     // map transforma cada objeto em uma linha HTML.
     const listaChamados = chamados.map(chamado => {
         //compara a prioridade com o objeto e determina a classe de acordo
         const nivel = nivelDprioridade[chamado.prioridade] || "";
         //chama o botão dependendo do status.
-        const estadoDstatus = estado[chamado.status] ? estado[chamado.status](chamado.id) : "";
-       /*
-        const estadoDstatus = estado[chamado.status] || "";
-        */
+        const btnDstatus = btnEstado[chamado.status] ? btnEstado[chamado.status](chamado.id) : "";
+        //determina a badge dependendo do status.
+        const badgeStatus = badgeEstado[chamado.status] || "";
 
         return `
             <!-- determina a classe do chamado de acordo com a prioridade -->
@@ -116,8 +121,8 @@ export function mostrarChamados() {
                 <td>${chamado.id}</td>
                 <td>${chamado.titulo}</td>
                 <td>${chamado.prioridade}</td>
-                <td>${chamado.status}</td>
-                <td>${estadoDstatus}</td>
+                <td><span class="${badgeStatus}">${chamado.status}</span></td>
+                <td>${btnDstatus}</td>
                 <td><button type="button" class="btn btn-primary" id="btnVisu" data-id="${chamado.id}">Visualizar</button></td>
             </tr>
         
