@@ -1,5 +1,6 @@
 import { chamados, mostrarChamados } from "./chamados.js";
 import { clamaJustificativa } from "./encerraChamado.js";
+import { mostraDadosChamado } from "./dadosChamado.js";
 
 //equivale o item da lista usando o id coletado
 export function equivale(valor) {
@@ -38,6 +39,7 @@ export function ouveTabela(item){
             return;
         }
 
+        //botões de alteração de status
         if(botao.id === "btnAtender"){
             // status = "Aberto"
             //puxa função para mudar o status do chamado
@@ -46,6 +48,13 @@ export function ouveTabela(item){
         else if(botao.id === "btnEncerrar"){
             // status = "Em atendimento"
             clamaJustificativa(botao.dataset.id);
+        }
+
+        //botão de visualização
+        if(botao.id === "btnVisu"){
+            console.log(botao.id);
+            console.log(botao.dataset.id);
+            mostraDadosChamado(botao.dataset.id);
         }
     })
 }

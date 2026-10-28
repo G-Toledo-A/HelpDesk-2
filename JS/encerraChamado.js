@@ -16,19 +16,19 @@ export function clamaJustificativa(idChamado){
             <form id="formFechamento">
                 <div class="mb-3">
                     <label class="form-label">
-                        ID: ${chamados[idChamado].id}
+                        ID: ${chamado.id}
                     </label>
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label" for="titulo">
-                        Título: ${chamados[idChamado].titulo}
+                        Título: ${chamado.titulo}
                     </label>
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label" for="descricao">
-                        Descrição : ${chamados[idChamado].descricao}
+                        Descrição : ${chamado.descricao}
                     </label>
                 </div>
 
@@ -38,7 +38,7 @@ export function clamaJustificativa(idChamado){
                     </label>
 
                     <select class="form-select" id="prioridade" required>
-                        <option>${chamados[idChamado].prioridade}</option>
+                        <option>${chamado.prioridade}</option>
                     </select>
                 </div>
 

@@ -118,6 +118,7 @@ export function mostrarChamados() {
                 <td>${chamado.prioridade}</td>
                 <td>${chamado.status}</td>
                 <td>${estadoDstatus}</td>
+                <td><button type="button" class="btn btn-primary" id="btnVisu" data-id="${chamado.id}">Visualizar</button></td>
             </tr>
         
         <!-- join une todas as linhas sem vírgula. -->
@@ -135,7 +136,7 @@ export function mostrarChamados() {
                         <th>Título</th>
                         <th>Prioridade</th>
                         <th>Status</th>
-                        <th>Ações</th>
+                        <th colspan="2">Ações</th>
                     </tr>
                 </thead>
 
