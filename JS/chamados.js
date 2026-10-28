@@ -80,7 +80,6 @@ function organizarLista(lista) {
 
 // Função que desenha a listagem.
 export function mostrarChamados() {
-
     //organiza a lista de chamados no inicio do chamado da função exportada
     organizarLista(chamados);
 
